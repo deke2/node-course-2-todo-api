@@ -40,6 +40,14 @@ MongoClient.connect('mongodb://localhost:27017/FootballApp', {useNewUrlParser: t
          console.log('Unable to fetch bids', err)
      });
 
+     // Erase (Re-set) Bids
+
+     db.collection('Teams').updateMany(
+        {},
+        { $set: { bid: null } },
+        { $upsert: false}
+     );
+
 
 //    db.close();
 });
