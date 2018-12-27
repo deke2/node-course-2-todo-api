@@ -52,19 +52,15 @@ describe('POST /todos', () => {
         .post('/todos')
         .send({})
         .expect(400)
-        .end((err, res) => {
-            if (err) {
-                return done();
-            }
+        .end();
 
         Todo.find().then((todos) => {
             expect(todos.length).toBe(2);
             done();
         }).catch((e) => done (e));
         });
-    });
-
 });
+
 describe('GET /todos', () => {
     it('Should get all todos', (done) => {
         request(app)
