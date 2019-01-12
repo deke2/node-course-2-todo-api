@@ -144,8 +144,10 @@ app.delete('/users/me/token', authenticate, (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Started up at port ${port}`);
-});
+if(!module.parent){
+  app.listen(port, () => {
+    console.log(`Started up at port ${port}`);
+  });
+};
 
 module.exports = {app};
